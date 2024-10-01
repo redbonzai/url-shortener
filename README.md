@@ -89,6 +89,25 @@ Ensure you have the following software installed:
 
 ## Running the Application
 
+### Note About The Data Source Synchronize Feature
+If running the app for the first time, the data-source.ts, located at `src/data-source/data-source.ts`
+must be configured with `synchronize: true`
+
+```terminal
+export const AppDataSource = new DataSource({
+  type: 'postgres',
+  host: '0.0.0.0',
+  port: 5433,
+  username: 'postgres',
+  password: 'postgres',
+  database: 'url_shortener',
+  entities: [Url],
+  // eslint-disable-next-line no-undef
+  migrations: [join(__dirname + '/../migrations/*{.ts,.js}')],
+  synchronize: true,
+});
+```
+
 ### Using Docker
 
 1. Run the Docker containers:
@@ -144,7 +163,7 @@ Postman collection exists within the `postman` directory
 
 - **Description**: Retrieves statistics for all shortened URLs.
 - **Response**:
-  ```json
+```json
 {
   "stats": [
     {
@@ -155,6 +174,7 @@ Postman collection exists within the `postman` directory
     "..."
   ]
 }
+```
 
 ### GET `/:slug`
 
