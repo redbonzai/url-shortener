@@ -85,7 +85,6 @@ describe('UrlService', () => {
       mockUrlRepository.findOne.mockResolvedValueOnce(url);
 
       const result = await service.findBySlug(slug);
-      console.log('RESULT: ', result);
       expect(result).toEqual(url);
       expect(mockUrlRepository.findOne).toHaveBeenCalledWith({
         where: { slug },

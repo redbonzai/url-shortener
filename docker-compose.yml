@@ -20,26 +20,23 @@ services:
     networks:
       - url_shortener
 
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: url_shortener_app
-    environment:
-      DATABASE_HOST: db
-      DATABASE_PORT: 5433
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres
-      DATABASE_NAME: url_shortener
+  db_test:
+    container_name: url_shortener_test_db
+    image: postgres:16.3
+    restart: always
+    volumes:
+      - db_test_data:/var/lib/postgresql/data
+      - ./src/seeds/seed.sql:/docker-entrypoint-initdb.d/seed.sql
     ports:
-      - "3250:8080"
-    depends_on:
-      - db
-    networks:
-      - url_shortener
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: local
+      POSTGRES_PASSWORD: local
+      POSTGRES_DB: test_e2e_db
 
 volumes:
   db_data:
+  db_test_data:
 
 networks:
   url_shortener:

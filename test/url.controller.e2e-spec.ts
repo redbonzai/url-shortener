@@ -1,7 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
+import { INestApplication, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
-import { UrlModule } from '../src/url.module'; // Import your main app module
+import { UrlModule } from '../src/url.module';
+import { TestDataSource } from '../src/data-source/data-source.test'; // Import your main app module
 
 describe('UrlController (E2E)', () => {
   let app: INestApplication;
@@ -12,7 +13,16 @@ describe('UrlController (E2E)', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
+    app.useGlobalPipes(new ValidationPipe());
     await app.init();
+  });
+
+  beforeEach(async () => {
+    const entities = TestDataSource.entityMetadatas;
+    for (const entity of entities) {
+      const repository = TestDataSource.getRepository(entity.name);
+      await repository.query(`DELETE FROM ${entity.tableName}`);
+    }
   });
 
   afterAll(async () => {
