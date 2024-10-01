@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "5c09da18-98b5-41e3-8090-b310259ccd16",
+		"name": "URL-SHORTNENER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2382474",
+		"_collection_link": "https://redbonzai-postman.postman.co/workspace/My-Workspace~68c19533-8412-45c3-821a-d73f0c148b2d/collection/2382474-5c09da18-98b5-41e3-8090-b310259ccd16?action=share&source=collection_link&creator=2382474"
+	},
+	"item": [
+		{
+			"name": "SHorten URL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"https://claude.ai\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3250/shortener/shorten",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3250",
+					"path": [
+						"shortener",
+						"shorten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3250/shortener/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3250",
+					"path": [
+						"shortener",
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FInd By Slug",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

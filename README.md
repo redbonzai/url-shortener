@@ -121,6 +121,9 @@ Ensure you have the following software installed:
 
 ## API Endpoints
 
+### Postman Collection
+Postman collection exists within the `postman` directory
+
 ### POST `/shorten`
 
 - **Description**: Shortens a given URL.
@@ -152,7 +155,6 @@ Ensure you have the following software installed:
     "..."
   ]
 }
-```
 
 ### GET `/:slug`
 
