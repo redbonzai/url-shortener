@@ -1,0 +1,25 @@
+<!-- views/form.hbs -->
+<form action="/shorten" method="POST">
+  <input type="url" name="url" placeholder="Enter URL" required>
+  <button type="submit">Shorten URL</button>
+</form>
+
+<!-- views/stats.hbs -->
+<table>
+  <thead>
+    <tr>
+      <th>Slug</th>
+      <th>Original URL</th>
+      <th>Visits</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each stats}}
+      <tr>
+        <td>{{this.slug}}</td>
+        <td>{{this.originalUrl}}</td>
+        <td>{{this.visits}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

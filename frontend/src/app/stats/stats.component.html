@@ -1,0 +1,19 @@
+<table>
+  <thead>
+  <tr>
+    <th>Short URL</th>
+    <th>Original URL</th>
+    <th>Visit Count</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let url of urls">
+    <td><a target="_blank" href="http://localhost:3250/{{ url.slug }}">http://localhost:3250/{{ url.slug }}</a></td>
+    <td>{{ url.originalUrl }}</td>
+    <td>{{ url.visitCount }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<button (click)="downloadCsv()">Download CSV</button>
+

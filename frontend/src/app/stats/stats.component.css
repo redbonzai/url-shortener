@@ -1,0 +1,81 @@
+/* Add some global table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+  text-align: left;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table header styles */
+thead th {
+  background-color: #4CAF50; /* Use a professional, subtle green tone */
+  color: white;
+  padding: 12px 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Table body row styles */
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+/* Table data cell styles */
+tbody td {
+  padding: 12px 15px;
+}
+
+/* Zebra-striping effect on rows */
+tbody tr:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect for better user interaction */
+tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Style the first column with a link-like color for the short URL */
+tbody td:first-child {
+  color: #007bff;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* Responsive styles to make table adapt to small screens */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  thead {
+    display: none; /* Hide table header for mobile view */
+  }
+
+  tbody td {
+    display: block;
+    padding: 10px 5px;
+    text-align: right;
+    border-bottom: 1px solid #dddddd;
+    position: relative;
+  }
+
+  tbody td:before {
+    content: attr(data-label); /* Use data-label attribute to simulate the table header */
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 20px;
+  }
+}
